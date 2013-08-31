@@ -22,8 +22,8 @@ end
 # POST ===========================================
 
 post '/register' do
-  @user = User.create(params[:user])
-  session[:user_id] = @user.id
+  user = User.create(params[:user])  
+  session[:user_id] = user.id
   redirect to('/game')
 end
 
@@ -40,10 +40,10 @@ post '/user' do
   end
 end
 
-# post '/game' do
-  
-#   erb :game
-# end
+post '/game' do
+
+  erb :game
+end
 
 
 post '/responses_answers' do
