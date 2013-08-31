@@ -7,6 +7,11 @@ get '/register' do
   erb :register
 end
 
+get '/game' do
+  card = Deck.first.cards.first
+
+  erb :game, layout: false, locals: {card: card}
+end
 
   
 
