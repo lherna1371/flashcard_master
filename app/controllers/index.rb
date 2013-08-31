@@ -1,4 +1,5 @@
 # GET ============================================
+
 get '/' do
   erb :index
 end
@@ -7,9 +8,15 @@ get '/register' do
   erb :register
 end
 
-
+get '/game' do
   
+  erb :game
+end
 
+get '/scores' do
+  erb :scores
+end
+  
 # POST ===========================================
 
 post '/register' do
@@ -23,16 +30,10 @@ post '/user' do
   if user
     # successfully authenticated; set up session and redirect
     session[:user_id] = user.id
-    redirect '/game'
+    redirect to('/game')
   else
     # an error occurred, re-render the sign-in form, displaying an error
     @error = "Invalid email or password."
     erb :index
   end
-end
-
-
-post '/game' do
-  
-  erb :game
 end
