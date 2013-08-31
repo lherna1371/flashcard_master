@@ -1,7 +1,7 @@
 class Round < ActiveRecord::Base
   belongs_to :users
   belongs_to :decks
-  belongs_to :cards, through: :guesses
+  # belongs_to :cards, through: :guesses
 
 
   def calculate_score
@@ -14,4 +14,6 @@ class Round < ActiveRecord::Base
   def incorrect_guesses
     self.guesses.where(correctness: nil)
   end
+
+  
 end
