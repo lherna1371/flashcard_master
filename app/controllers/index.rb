@@ -37,7 +37,25 @@ post '/user' do
 end
 
 
-post '/game' do
+# post '/game' do
   
-  erb :game
+#   erb :game
+# end
+
+
+post '/responses_answers' do
+  
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
