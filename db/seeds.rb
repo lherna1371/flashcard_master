@@ -22,6 +22,3 @@ Dir["db/decks/*"].each do |file_path|
 	deck = create_deck(file_path)
 	create_cards(file_path, deck)
 end 
-
-
-
