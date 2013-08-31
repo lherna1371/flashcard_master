@@ -9,8 +9,10 @@ get '/register' do
 end
 
 get '/game' do
-  
-  erb :game
+
+  card = Deck.first.cards.first
+
+  erb :game, layout: false, locals: {card: card}
 end
 
 get '/scores' do
@@ -37,3 +39,14 @@ post '/user' do
     erb :index
   end
 end
+
+# post '/game' do
+  
+#   erb :game
+# end
+
+
+post '/responses_answers' do
+  
+end
+
