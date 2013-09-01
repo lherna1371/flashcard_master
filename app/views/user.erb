@@ -5,7 +5,7 @@
   <h1> Choose Deck </h1>
   <form action="/game" method="POST"> 
     <% @decks.each do |deck| %>
-      <input type="radio" name="options" value="<%= deck.id %>" />
+      <input required="required" type="radio" name="options" value="<%= deck.id %>" />
       <label for="id_deck[<%= deck.id %>]"><%= deck.name %></label><hr>
     <%end%>
     <input class="play" type="submit" value="Play" />
