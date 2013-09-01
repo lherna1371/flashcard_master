@@ -1,4 +1,4 @@
-<section class="centerwrap">
+<section class="game centerwrap">
   <ul class="game_questions">
     <% if @score %>
     <h3>Your Score So Far Is: <%= @score %>, Pretty Shameful</h3> 
@@ -6,8 +6,7 @@
       <% @cards.each do |card| %>
         <% if card.id == @current_val %>       
         <form action="/game/<%= @current_val%>" method="POST">
-          <li><%= card.question %>
-          <li><input type="text" name="game[answer]" /></li>
+          <li><input placeholder="Question: <%= card.question %>" required="required" type="text" name="game[answer]" /></li>
           <li><input type="submit" value="Answer" /></li>
         </form>
         <%end%> 
