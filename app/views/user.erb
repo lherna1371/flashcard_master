@@ -1,12 +1,14 @@
- <section class="centerwrap">
+ <section class="user_page centerwrap">
   <% if current_user%>
   <%=current_user.email%>
   <%end%>
   <h1> Choose Deck </h1>
   <form action="/game" method="POST"> 
-  <% @decks.each do |deck| %>
-    <input type="checkbox" name="params[<%= deck.name %>]" />
-    <input type="submit" value="Play" />
+    <% @decks.each do |deck| %>
+      <hr><input type="checkbox" name="params[<%= deck %>]" />
+      <label for="params[<%= deck %>]"><%= deck.name %></label><br>
+    <%end%>
+    <hr>
+    <input class="play" type="submit" value="Play" />
   </form>
-  <%end%>
- <section class="centerwrap">
+ <section/>
