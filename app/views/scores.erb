@@ -1,5 +1,11 @@
-<br>
-<br>
-<br>
-<br>
-<%= 'Scores page' %>
+<section class="centerwrap">
+<%= @user %><hr> 
+<% @round.first.each do |r| %>
+<h4>
+  <% @decks.each {|d| @v = d.name if d.first.id == r.id  } %>
+  Deck: <%= @v %> <br>
+  Round: <%= r.id %><br> 
+  USER: <%= r.user_id %><br> 
+  Score: <%= r.score %></h4><hr>
+<% end %>
+</section>

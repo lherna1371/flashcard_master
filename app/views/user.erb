@@ -5,10 +5,9 @@
   <h1> Choose Deck </h1>
   <form action="/game" method="POST"> 
     <% @decks.each do |deck| %>
-      <hr><input type="checkbox" name="params[<%= deck %>]" />
-      <label for="params[<%= deck %>]"><%= deck.name %></label><br>
+      <input type="radio" name="options" value="<%= deck.id %>" />
+      <label for="id_deck[<%= deck.id %>]"><%= deck.name %></label><hr>
     <%end%>
-    <hr>
     <input class="play" type="submit" value="Play" />
   </form>
  <section/>

@@ -236,7 +236,9 @@ section.user_page label{
   padding-left:10px;
 }
 
-
+ul.game_questions li{
+  list-style:none;
+}
 
 
 
