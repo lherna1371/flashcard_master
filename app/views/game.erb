@@ -1,13 +1,17 @@
 
 
-
-<% if @user %>
-  <%= @user %>
-  <%= @email %>
-  <%= @id %>
+<% if @c %>
+  <%= @c %>
+  <%= @g %>
+  <%= @d %>
+  <%= @score %>
+<% else %>  
+<div><%= card.question %></div>
+  <form action="/responses_answers" method="POST">
+    <input placeholder="answer" type="answer" name="game[answer]">
+    <input type="text" name="game[id]" value="<%=card.id%>">
+    <input class="login" type="submit" value="Submit Answer">
+  </form>
 <% end %>
-
-
-
 
 

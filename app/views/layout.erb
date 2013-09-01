@@ -27,9 +27,13 @@
   <nav>
     <ul class="centerwrap">
       <li class="logo"><h1>Glint.Card</h1></li>
-      <li><a href=""> Home</a></li>
-      <li><a href=""> Scores</a></li>
-      <li><a href=""> Logout</a></li>
+      <% if current_user %>
+        <li><a href="/user/<%= current_user.id %>"> Home</a></li>
+      <% else %>
+        <li><a href="/"> Home</a></li>
+      <% end %>
+      <li><a href="/scores"> Scores</a></li>
+      <li><a href="/logout"> Logout</a></li>
     </ul>
   </nav>
   <div class="container"> 

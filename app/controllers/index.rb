@@ -8,11 +8,8 @@ get '/register' do
   erb :register
 end
 
-get '/user' do
-  @user = session[:user]
-  @email = @user.email
-  @id = @user.id
-  
+get '/user/:id' do
+  @decks = Deck.all
   erb :user
 end
 
@@ -29,25 +26,25 @@ end
 get '/scores' do
   erb :scores
 end
+
+get '/logout' do
+  session.clear
+  erb :index
+end
   
 # POST ===========================================
 
 post '/register' do
   user = User.create(params[:user])  
   session[:user_id] = user.id
-  redirect to('/game')
+  redirect to("/user/#{current_user.id}")
 end
 
 post '/user' do
   user = User.authenticate(params[:user][:email], params[:user][:password])
-  if user
-    # successfully authenticated; set up session and redirect
-    session[:user] = user
-    @user = user
-    @email = user.email
-    @id = user.id
-    erb :game 
-    # redirect to('/game')
+  if user 
+    session[:user_id] = user.id
+    redirect to("/user/#{current_user.id}")
   else
     # an error occurred, re-render the sign-in form, displaying an error
     @error = "Invalid email or password."
@@ -62,23 +59,24 @@ end
 
 post '/responses_answers' do
   current_card = Card.find((params[:game][:id]).to_i)
-
-  if current_card.answer.downcase == params[:game][:answer].downcase
-    
-    correctness = true
-
-    # @user = Round.where(user_id: user.id)
-    # @score = @user.first.score
-    correct_guesses = guesses.where(correctness: true).count
-    total_guesses = self.guesses.count
-    self.score = ((correct_guesses.to_f / total_guesses) * 100).to_i
-    self.save 
-  
-    p "this is working" 
-
-    erb :game
+  user_answer = params[:game][:answer].downcase
+  @cci = current_card.id
+  @cca = current_card.answer
+  @ccq = current_card.question
+  @ccd = current_card.deck_id
+  @ua = user_answer
+  if current_card.answer.downcase == user_answer
+    guess = Guess.create(response: user_answer, correctness: true, card_id: current_card.id, round_id: 1)
+    @p = "YOU WERE RIGHT"
+    correct_guesses = Guess.where(correctness: true).count
+    @c = Guess.last 
+    @g = Guess.all
+    @d = Guess.last.response
+    @score = correct_guesses
+    erb :game, layout: false
+  else
+    @p_wrong = "this is working"
   end
- 
 end
 
 
