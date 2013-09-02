@@ -1,5 +1,12 @@
+<section class="home centerwrap">
+ <section> <%if @errors%>
+   <%@user.errors.full_messages.each do |error|%>
+   <%=error%>
+    <%end%>
+  </section><%end%>
   <form action="/register" method="POST">
     <input placeholder="email" type="email" name="user[email]">
     <input class="goleft" placeholder="password" type="password" required="required" name="user[password]">
-    <input class="login" type="submit" value="Register">
+    <input id="register"    class="login" type="submit" value="Register">
   </form>
+</section>

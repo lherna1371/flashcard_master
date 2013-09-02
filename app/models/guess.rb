@@ -1,6 +1,6 @@
 class Guess < ActiveRecord::Base
-  belongs_to :rounds
-  belongs_to :cards
+  belongs_to :round
+  belongs_to :card
   # Remember to create a migration!
 
   

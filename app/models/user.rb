@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   end
 
   def password=(pass)
-    @entered_password = pass
     @password = Password.create(pass)
     self.password_digest = @password
   end

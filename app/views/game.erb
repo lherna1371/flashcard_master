@@ -1,17 +1,17 @@
-<section class="centerwrap">
+<section class="game centerwrap">
   <ul class="game_questions">
     <% if @score %>
-    <h3>Your Score So Far Is: <%= @score %>, Pretty Shameful</h3> 
+    <h3>Your Score So Far Is: <%= @score %></h3> 
     <%end%>
-      <% @cards.each do |card| %>
-        <% if card.id == @current_val %>       
-        <form action="/game/<%= @current_val%>" method="POST">
-          <li><%= card.question %>
-          <li><input type="text" name="game[answer]" /></li>
+          <%if @error_message%>
+          <h4><%=@error_message%></h4>
+          <%end%>
+        <form action="/play/<%=@round.id%>" method="POST">
+          <input type="hidden" name="card" value ="<%= @current_card.id %>" >
+          <li><%= @current_card.question %></li>
+          <li><input type="text" name="game[answer]"></li>
           <li><input type="submit" value="Answer" /></li>
         </form>
-        <%end%> 
-      <% end %>
   </ul>
 </section>
 

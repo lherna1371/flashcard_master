@@ -1,15 +1,3 @@
-/*
- * HTML5 Boilerplate
- *
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
 html,
 button,
 input,
@@ -191,7 +179,7 @@ section.home > form {
   /*border:solid 1px red;*/
   margin:0 50px;
 }
-
+section.game > ul.game_questions > form > li > input,
 section.home > form > input{
   text-align: center;
   background: rgba(21,21,21,0.6);
@@ -200,9 +188,20 @@ section.home > form > input{
   margin: 5px 0;
   width:600px;
   height: 80px;
+  -webkit-transition: background 500ms ease-out 0.1s;
+  -moz-transition: background 500ms ease-out 0.1s;
+  -o-transition: background 500ms ease-out 0.1s;
+  transition: background 500ms ease-out 0.1s;
+  cursor: pointer;
 }
+
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+section.game > ul.game_questions > form > li > input:hover,
 section.home > form > input:hover{
   background: rgba(215,40,40,0.9);
+  cursor: pointer;
 }
 section.home > form > input.goleft{
   margin:5px 0 0 -5px;

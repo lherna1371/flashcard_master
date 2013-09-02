@@ -29,7 +29,7 @@
       <li class="logo"><h1>Glint.Card</h1></li>
       <% if current_user %>
         <li><a href="/user/<%= current_user.id %>"> Home</a></li>
-        <li><a href="/scores/<%= current_user.id %>"> Scores</a></li>
+        <li><a href="/scores"> Scores</a></li>
         <li><a href="/logout"> Logout</a></li>
       <% else %>
         <li><a href="/"> Home</a></li>
@@ -44,6 +44,6 @@
     <![endif]-->
     <%= yield %>
   </div>
-  <footer></footer>
+
 </body>
 </html>
